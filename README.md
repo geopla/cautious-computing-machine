@@ -6,7 +6,21 @@
 
 ## Challenges
 
-### Unit testing with Wiremock
+### Unit testing with Wiremock (and WebTestClient)
+
+Works but ...
+- Wiremock is currently bundled with Jetty 11
+- WebTestClient won't work with that version
+- in this non Spring Boot project, the straightforward solution is
+  - switch to Jetty 12 as supported by Wiremock too
+  - exclude all the Jetty 11 dependencies
+  - use the following Spring dependencies
+    - `spring-test` - maybe?
+    - `spring-webflux`
+    - `spring-context`
+- otherwise you will experience some crazy shit like
+  - `NoSuchMethodError`
+  - `IncompatibleClassChangeError`
 
 #### Providing mappings and test data for Wiremock
 
