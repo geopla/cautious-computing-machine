@@ -2,7 +2,10 @@
 
 ## Infos and Resources
 - [Movie Service - REST](https://github.com/dilipsundarraj1/reactive-movies-restful-api)
-
+- Backend from Udemy - will use Wiremock instead
+  - `cd tmp`
+  - `java -jar reactive-movies-restful-api.jar`
+  - [OpenAPI definition](http://localhost:8080/movies/swagger-ui.html)
 
 ## Challenges
 
@@ -27,7 +30,7 @@ Works but ...
 - [Handlebars](https://handlebarsjs.com/)
 
 #### Challenge: Map query parameter to a response body file
-Easy but don't trust that Copilot crap. The following tips may help instead
+Easy but don't trust that Copilot crap. The following tips may help
 - use `urlPathTemplate` to specify the path ([RFC 6570](https://www.rfc-editor.org/rfc/rfc6570))
 - narrow down the path matching avoiding future matching conflicts
 - place the response files under `src/test/resources/__files/` which seems to be a Wiremock 'standard'
@@ -40,7 +43,7 @@ Just thinking ...
 - hard coded in Unit test (Wiremock Stub)
   - only necessary mappings are to be loaded
   - reduces confusion due to missing information when reading the test code
-- as JSON in `src/test/resources/mappings`
+- as static JSON in `src/test/resources/mappings`
   - nice if there is some copy & paste possible
 - import from Open API yaml
   - example data only which might be not sufficient to cover all test cases
@@ -48,7 +51,7 @@ Just thinking ...
 **Options for test data**
 - hard code in Unit test (Wiremock Stub)
   - always reasonable for 'small' tests
-- read from resource files (JSON, CSV)
+- as dynamic JSON in `src/test/resources/mappings` combined with files in `src/test/resources/__files`
   - needs some IO logic, see [Wiremock response templating](https://wiremock.org/docs/response-templating/)
   - data dumps might be already available
 - in-memory database (object store)
@@ -60,7 +63,7 @@ Needs to be evaluated still but use JSON mapping/files while startin with happy 
 Wiremock Stubs in code are apppropriate when dealing with errors or edge cases. The advantage will be,
 that there is something like a 'ubiquitous data language' established.
 
-**Reasoning why not using an in memory database**
-- state won't be needed at all, because testing the boundary only instead of a virtualizing a system
+**Reasoning why not to use an in memory database**
+- state won't be needed at full extent because testing happens at the boundary only
 - Wiremock ~~might~~ support states by [scenarios](https://wiremock.org/docs/stateful-behaviour/)
-- increase of complexity
+- complexity
