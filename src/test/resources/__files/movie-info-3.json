@@ -1,0 +1,10 @@
+{
+  "movieInfoId": 3,
+  "name": "Dark Knight Rises",
+  "year": 2008,
+  "cast": [
+    "Christian Bale",
+    "Tom Hardy"
+  ],
+  "release_date": "2012-07-20"
+}

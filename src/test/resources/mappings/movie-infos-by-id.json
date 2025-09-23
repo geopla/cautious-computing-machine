@@ -1,0 +1,19 @@
+{
+  "request": {
+    "method": "GET",
+    "urlPathTemplate": "/v1/movie-infos/{id}",
+    "pathParameters": {
+      "id": {
+        "matches": "^[0-9]+$"
+      }
+    }
+  },
+  "response": {
+    "status": 200,
+    "headers": {
+      "Content-Type": "application/json"
+    },
+    "bodyFileName": "movie-info-{{request.path.id}}.json",
+    "transformers": ["response-template"]
+  }
+}

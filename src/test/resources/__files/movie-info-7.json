@@ -1,0 +1,26 @@
+{
+  "movieInfoId": 7,
+  "name": "Avengers: Infinity War",
+  "year": 2019,
+  "cast": [
+    "Robert Downey Jr.",
+    "Chris Evans",
+    "Mark Ruffalo",
+    "Chris Hemsworth",
+    "Scarlett Johansson",
+    "Jeremy Renner",
+    "Tom Hiddleston",
+    "Samuel L. Jackson",
+    "Don Cheadle",
+    "Idris Elba",
+    "Chris Patt",
+    "Elizabeth Olsen",
+    "Dave Bautista",
+    "Benedict Cumberbatch",
+    "Tom Holland",
+    "Chadwick Boseman",
+    "Gwyneth Paltrow",
+    "Brie Larson"
+  ],
+  "release_date": "2019-04-22"
+}

@@ -49,13 +49,18 @@ Just thinking ...
 - hard code in Unit test (Wiremock Stub)
   - always reasonable for 'small' tests
 - read from resource files (JSON, CSV)
-  - needs some IO logic
+  - needs some IO logic, see [Wiremock response templating](https://wiremock.org/docs/response-templating/)
   - data dumps might be already available
 - in-memory database (object store)
   - supports state
   - reuse of already existing scripts to initialize (static) data
 
-**Reasoning when not using an in memory database**
+**Best practice**
+Needs to be evaluated still but use JSON mapping/files while startin with happy path use cases first.
+Wiremock Stubs in code are apppropriate when dealing with errors or edge cases. The advantage will be,
+that there is something like a 'ubiquitous data language' established.
+
+**Reasoning why not using an in memory database**
 - state won't be needed at all, because testing the boundary only instead of a virtualizing a system
-- Wiremock might support states also
+- Wiremock ~~might~~ support states by [scenarios](https://wiremock.org/docs/stateful-behaviour/)
 - increase of complexity

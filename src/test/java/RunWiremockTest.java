@@ -34,7 +34,7 @@ public class RunWiremockTest {
     }
 
     @Test
-    @DisplayName("Should map query parameter movie id to response body file")
+    @DisplayName("Should map query parameter 'movieInfoId' to review response body file")
     void shouldMapQueryParameterToResponseBody() {
         var path = "/v1/reviews?movieInfoId=2";
 
@@ -43,5 +43,17 @@ public class RunWiremockTest {
                 .expectStatus().isOk()
                 .expectBody()
                 .jsonPath("$.[0].comment").isEqualTo("MASTERPIECE");
+    }
+
+    @Test
+    @DisplayName("Should map path parameter 'id' to movie info response body file")
+    void shouldMapPathParameterToResponseBody() {
+        var path = "/v1/movie-infos/3";
+        webTestClient.get().uri(path)
+                .exchange()
+                .expectStatus().isOk()
+                .expectBody()
+                .jsonPath("$.name").isEqualTo("Dark Knight Rises")
+                .jsonPath("$.year").isEqualTo(2008);
     }
 }
