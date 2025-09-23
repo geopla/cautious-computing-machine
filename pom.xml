@@ -13,6 +13,12 @@
     </properties>
     <dependencies>
         <dependency>
+            <groupId>ch.qos.logback</groupId>
+            <artifactId>logback-classic</artifactId>
+            <version>1.4.14</version>
+        </dependency>
+
+        <dependency>
             <groupId>org.junit.jupiter</groupId>
             <artifactId>junit-jupiter</artifactId>
             <version>5.13.4</version>
@@ -30,7 +36,6 @@
             <version>5.5.1</version>
             <scope>test</scope>
         </dependency>
-
         <!-- Integration testing with Wiremock -->
         <dependency>
             <groupId>org.wiremock</groupId>
@@ -78,7 +83,6 @@
             <version>3.13.1</version>
             <scope>test</scope>
         </dependency>
-
         <!-- for using Spring WebTestClient -->
         <dependency>
             <groupId>org.springframework</groupId>
@@ -98,7 +102,6 @@
             <version>6.2.10</version>
             <scope>test</scope>
         </dependency>
-
         <!-- As required for WebTestClient body assertions -->
         <dependency>
             <groupId>org.skyscreamer</groupId>
@@ -117,4 +120,3 @@
         </plugins>
     </build>
 </project>
-

@@ -22,7 +22,19 @@ Works but ...
   - `NoSuchMethodError`
   - `IncompatibleClassChangeError`
 
-#### Providing mappings and test data for Wiremock
+### Wiremock Response Templating
+- [Response Templating](https://wiremock.org/docs/response-templating/)
+- [Handlebars](https://handlebarsjs.com/)
+
+#### Challenge: Map query parameter to a response body file
+Easy but don't trust that Copilot crap. The following tips may help instead
+- use `urlPathTemplate` to specify the path ([RFC 6570](https://www.rfc-editor.org/rfc/rfc6570))
+- narrow down the path matching avoiding future matching conflicts
+- place the response files under `src/test/resources/__files/` which seems to be a Wiremock 'standard'
+- add `"transformers": ["response-template"]` to the response attributes; see also [Enabling/disabling response templating](https://wiremock.org/docs/response-templating/#enablingdisabling-response-templating)
+
+#### Provide mappings and test data for Wiremock
+Just thinking ...  
 
 **Options for mappings**
 - hard coded in Unit test (Wiremock Stub)

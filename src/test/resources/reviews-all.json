@@ -1,0 +1,44 @@
+[
+  {
+    "reviewId": 1,
+    "movieInfoId": 1,
+    "rating": 8.2,
+    "comment": "Nolan is the real superhero"
+  },
+  {
+    "reviewId": 2,
+    "movieInfoId": 2,
+    "rating": 9,
+    "comment": "MASTERPIECE"
+  },
+  {
+    "reviewId": 3,
+    "movieInfoId": 3,
+    "rating": 8.4,
+    "comment": "EPIC"
+  },
+  {
+    "reviewId": 4,
+    "movieInfoId": 4,
+    "rating": 8,
+    "comment": "Avengers is an amazing movie with an amazing cast"
+  },
+  {
+    "reviewId": 5,
+    "movieInfoId": 5,
+    "rating": 7.3,
+    "comment": "Avengers: Age of Ultron is a damn good Superhero flick, excellent sequel!"
+  },
+  {
+    "reviewId": 6,
+    "movieInfoId": 6,
+    "rating": 8.4,
+    "comment": "Best Cliffhanger of all Time"
+  },
+  {
+    "reviewId": 7,
+    "movieInfoId": 7,
+    "rating": 8.4,
+    "comment": "The ending made all 22 movies worth it"
+  }
+]

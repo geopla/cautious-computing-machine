@@ -1,0 +1,19 @@
+{
+  "request": {
+    "method": "GET",
+    "urlPathTemplate": "/v1/reviews",
+    "queryParameters": {
+      "movieInfoId": {
+        "matches": "^[0-9]+$"
+      }
+    }
+  },
+  "response": {
+    "status": 200,
+    "headers": {
+      "Content-Type": "application/json"
+    },
+    "bodyFileName": "reviews-{{request.query.movieInfoId}}.json",
+    "transformers": ["response-template"]
+  }
+}

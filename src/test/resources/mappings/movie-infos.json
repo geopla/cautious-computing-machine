@@ -3,7 +3,6 @@
     "method": "GET",
     "url": "/v1/movie-infos"
   },
-
   "response": {
     "status": 200,
     "headers": {
