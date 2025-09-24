@@ -1,11 +1,11 @@
 package movies;
 
-import org.springframework.web.reactive.function.client.ClientResponse;
 import org.springframework.web.reactive.function.client.WebClient;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
-import java.util.function.Function;
+import static movies.ReactiveResponse.*;
+import static movies.ReactiveResponse.handleMonoResponse;
 
 public class MovieService {
 
@@ -31,27 +31,5 @@ public class MovieService {
                 .get()
                 .uri(path)
                 .exchangeToFlux(handleFluxResponse(MovieInfo.class));
-    }
-
-    private <T> Function<ClientResponse, Mono<T>> handleMonoResponse(Class<T> clazz) {
-        return response -> {
-            if (response.statusCode().is2xxSuccessful()) {
-                return response.bodyToMono(clazz);
-            } else {
-                var message = "Oopsie, gotta HTTP %d".formatted(response.statusCode().value());
-                return Mono.error(new RuntimeException(message));
-            }
-        };
-    }
-
-    private <T> Function<ClientResponse, Flux<T>> handleFluxResponse(Class<T> clazz) {
-        return response -> {
-            if (response.statusCode().is2xxSuccessful()) {
-                return response.bodyToFlux(clazz);
-            } else {
-                var message = "Oopsie, gotta HTTP %d".formatted(response.statusCode().value());
-                return Flux.error(new RuntimeException(message));
-            }
-        };
     }
 }
