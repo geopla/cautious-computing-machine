@@ -1,16 +1,22 @@
 package movies;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 import java.time.LocalDate;
 import java.util.List;
 
 public record MovieInfo(
+        @JsonProperty("movieInfoId")
         long id,
+
         String name,
-        List<String> casts,
+
         int year,
+
+        @JsonProperty("cast")
+        List<String> casts,
+
+        @JsonProperty("release_date")
         LocalDate releaseDate
 ) {
-    public MovieInfo {
-        casts = List.copyOf(casts);
-    }
 }
