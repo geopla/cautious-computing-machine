@@ -4,8 +4,8 @@ import org.springframework.web.reactive.function.client.WebClient;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
-import static movies.ReactiveResponse.*;
 import static movies.ReactiveResponse.handleMonoResponse;
+import static movies.ReactiveResponse.handleFluxResponse;
 
 public class MovieService {
 
