@@ -11,6 +11,12 @@ import reactor.test.StepVerifier;
 import java.time.LocalDate;
 import java.util.List;
 
+import static com.github.tomakehurst.wiremock.client.WireMock.aResponse;
+import static com.github.tomakehurst.wiremock.client.WireMock.get;
+import static com.github.tomakehurst.wiremock.client.WireMock.matching;
+import static com.github.tomakehurst.wiremock.client.WireMock.stubFor;
+import static com.github.tomakehurst.wiremock.client.WireMock.urlPathTemplate;
+
 @WireMockTest()
 class MovieServiceTest {
 
@@ -50,5 +56,43 @@ class MovieServiceTest {
         StepVerifier.create(movieService.movieInfos())
                 .expectNextCount(numberOfMovies)
                 .verifyComplete();
+    }
+
+    // having fun with Wiremock stubs - but should be tested in ReactiveResponse otherwise
+    // TODO use problem details (RFC 9457) instead of plain text
+
+    @Test
+    @DisplayName("Should handle Flux response HTTP error")
+    void shouldHandleFluxResponseHttpError() {
+        var movieInfosPath = "/v1/movie-infos";
+
+        stubFor(get(movieInfosPath)
+                .willReturn(aResponse()
+                        .withStatus(500)
+                        .withStatusMessage("Oh nooo!")
+                        .withHeader("Content-Type", "text/plain"))
+        );
+
+        StepVerifier.create(movieService.movieInfos())
+                .expectErrorMessage("Oopsie, gotta HTTP 500")
+                .verify();
+    }
+
+    @Test
+    @DisplayName("Should ")
+    void shouldHandleMonoResponseHttpError() {
+        var movieInfoByIdPath = "/v1/movie-infos/{id}";
+
+        stubFor(get(urlPathTemplate(movieInfoByIdPath))
+                .withPathParam("id", matching("^[0-9]+$"))
+                .willReturn(aResponse()
+                        .withStatus(404)
+                        .withStatusMessage("What the f*** you are looking for?")
+                        .withHeader("Content-Type", "text/plain"))
+        );
+
+        StepVerifier.create(movieService.movieInfo(42))
+                .expectErrorMessage("Oopsie, gotta HTTP 404")
+                .verify();
     }
 }
