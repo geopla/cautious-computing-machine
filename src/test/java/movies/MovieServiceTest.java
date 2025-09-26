@@ -17,7 +17,7 @@ import static com.github.tomakehurst.wiremock.client.WireMock.matching;
 import static com.github.tomakehurst.wiremock.client.WireMock.stubFor;
 import static com.github.tomakehurst.wiremock.client.WireMock.urlPathTemplate;
 
-@WireMockTest()
+@WireMockTest
 class MovieServiceTest {
 
     MovieService movieService;
