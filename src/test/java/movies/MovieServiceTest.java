@@ -58,7 +58,7 @@ class MovieServiceTest {
                 .verifyComplete();
     }
 
-    // having fun with Wiremock stubs - but should be tested in ReactiveResponse otherwise
+    // having fun with Wiremock stubs - tested in ReactiveResponse anyway
     // TODO use problem details (RFC 9457) instead of plain text
 
     @Test
